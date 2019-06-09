@@ -5,7 +5,7 @@ ENV DS_BRANCH=master
 RUN apt-get update && \
   apt-get install -y python-pip python-setuptools && \
   python /usr/lib/python2.7/dist-packages/easy_install.py supervisor && \
-  pip install supervisor-stdout && \
+  pip install supervisor-stdout
   
 COPY --from=darkstar-server-base /darkstar /darkstar  
 COPY etc/ etc/
