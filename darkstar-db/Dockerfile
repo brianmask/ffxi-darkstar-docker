@@ -5,7 +5,7 @@ COPY docker-entrypoint-initdb.d/ docker-entrypoint-initdb.d
 RUN apt-get update && apt-get install -y git && \
   rm -rf /var/lib/apt/lists/*
 
-RUN git clone --depth=1 -b stable http://github.com/DarkstarProject/darkstar.git/ /darkstar && \
+RUN git clone --depth=1 -b master http://github.com/brianmask/darkstar.git/ /darkstar && \
   mkdir -p /docker-entrypoint-initdb.d/.seed && \
   cp /darkstar/sql/* /docker-entrypoint-initdb.d/.seed/ && \
   rm -rf /darkstar
