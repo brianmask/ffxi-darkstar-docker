@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 # Persistent volume for the db
 volumes:
   db_data:
