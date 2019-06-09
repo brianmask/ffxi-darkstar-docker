@@ -20,7 +20,7 @@ RUN apt-get update && \
 # add darkstar user and fix permissions
 RUN groupadd -r darkstar && \
   useradd -g darkstar -ms /bin/bash darkstar && \
-  chown -R darkstar:darkstar /darkstar && \
+  chown -R darkstar:darkstar /darkstar
 
 USER darkstar
 
