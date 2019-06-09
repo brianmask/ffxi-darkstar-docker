@@ -17,12 +17,17 @@ RUN apt-get update && \
   rm -rf /darkstar/src && \
   rm -rf /darkstar/sql
 
+COPY etc/ etc/
+COPY docker-entrypoint.sh /usr/local/bin/
+
 # add darkstar user and fix permissions
 RUN groupadd -r darkstar && \
   useradd -g darkstar -ms /bin/bash darkstar && \
   chown -R darkstar:darkstar /darkstar && \
+  chmod a+x /usr/local/bin/docker-entrypoint.sh
 
 USER darkstar
-
+EXPOSE 54230 54230/udp 54231 54001 54002
 WORKDIR /darkstar
 
+CMD ["docker-entrypoint.sh"]

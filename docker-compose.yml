@@ -3,9 +3,46 @@ version: '2'
 volumes:
   db_data:
 services:
-  darkstart-server:
-    container_name: darkstar-server
-    build: darkstar-server
+  darkstar-login:
+    container_name: darkstar-login
+    build: darkstar-login
+    links:
+    - darkstar-db
+    - darkstar-search
+    environment:
+      MYSQL_HOST: darkstar-db
+      MYSQL_LOGIN: ${MYSQL_LOGIN}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      SERVERNAME: ${SERVERNAME}
+      MSG_SERVER_IP: darkstar-search
+    ports:
+    - "54230:54230"
+    - "54230:54230/udp"
+    - "54231:54231"
+    - "54001:54001"
+    - "54002:54002"
+  darkstar-search:
+    container_name: darkstar-search
+    build: darkstar-search
+    links:
+    - darkstar-db
+    environment:
+      MYSQL_HOST: darkstar-db
+      MYSQL_LOGIN: ${MYSQL_LOGIN}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      SERVERNAME: ${SERVERNAME}
+      MSG_SERVER_IP: darkstar-search
+    ports:
+    - "54230:54230"
+    - "54230:54230/udp"
+    - "54231:54231"
+    - "54001:54001"
+    - "54002:54002"
+  darkstar-server-1:
+    container_name: darkstar-server-1
+    build: darkstar-server-1
     links:
     - darkstar-db
     environment:
