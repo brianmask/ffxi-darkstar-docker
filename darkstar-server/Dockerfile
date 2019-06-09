@@ -1,18 +1,10 @@
-FROM ubuntu:trusty
+FROM i386/ubuntu:bionic
 
-ENV DS_BRANCH=stable
+ENV DS_BRANCH=master
 
 RUN apt-get update && \
-  apt-get install -y build-essential git libmysqlclient-dev libluajit-5.1-dev \
-  libzmq3-dev autoconf pkg-config software-properties-common python-pip && \
-  apt-add-repository -y ppa:ubuntu-toolchain-r/test && \
-  apt-get update && \
-  apt-get install -y g++-5 && \
-  cd /usr/bin && \
-  rm gcc g++ cpp && \
-  ln -s gcc-5 gcc && \
-  ln -s g++-5 g++ && \
-  ln -s cpp-5 cpp && \
+  apt-get install -y software-properties-common build-essential easy_install \ 
+  g++-7 luajit libzmq3-dev luarocks libmysqlclient-dev && \
   easy_install supervisor && \
   pip install supervisor-stdout && \
   git clone --depth=1 -b ${DS_BRANCH} http://github.com/DarkstarProject/darkstar.git/ /darkstar && \
