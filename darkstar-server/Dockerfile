@@ -4,7 +4,7 @@ ENV DS_BRANCH=master
 
 RUN apt-get update && \
   apt-get install -y software-properties-common build-essential easy_install \ 
-  g++-7 luajit libzmq3-dev luarocks libmysqlclient-dev && \
+  g++-7 luajit libzmq3-dev luarocks libmysqlclient-dev git && \
   easy_install supervisor && \
   pip install supervisor-stdout && \
   git clone --depth=1 -b ${DS_BRANCH} http://github.com/DarkstarProject/darkstar.git/ /darkstar && \
