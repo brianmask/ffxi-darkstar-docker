@@ -3,7 +3,7 @@ FROM i386/ubuntu:bionic
 ENV DS_BRANCH=master
 
 RUN apt-get update && \
-  apt-get install -y software-properties-common build-essential easy_install \ 
+  apt-get install -y software-properties-common build-essential python-pip \ 
   g++-7 luajit libzmq3-dev luarocks libmysqlclient-dev git && \
   easy_install supervisor && \
   pip install supervisor-stdout && \
