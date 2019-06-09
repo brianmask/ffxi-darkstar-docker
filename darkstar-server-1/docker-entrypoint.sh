@@ -8,10 +8,12 @@ MYSQL_LOGIN=${MYSQL_LOGIN:-darkstar}
 MYSQL_PASSWORD=${MYSQL_PASSWORD:-darkstar}
 MYSQL_DATABASE=${MYSQL_DATABASE:-dspdb}
 SERVERNAME=${SERVERNAME:-DarkStar}
+MSG_SERVER=${MSG_SERVER:-127.0.0.1}
+SERVER_PORT=${SERVER_ONE_PORT:-54230}
 
 ## modify configuration
 function modConfig() {
-    local db_files=(login_darkstar.conf map_darkstar.conf search_server.conf)
+    local db_files=(map_darkstar.conf)
 
     for f in ${db_files[@]}
     do
@@ -21,10 +23,11 @@ function modConfig() {
             sed -i "s/^\(mysql_login:\s*\).*\$/\1$MYSQL_LOGIN/" /darkstar/conf/$f
             sed -i "s/^\(mysql_password:\s*\).*\$/\1$MYSQL_PASSWORD/" /darkstar/conf/$f
             sed -i "s/^\(mysql_database:\s*\).*\$/\1$MYSQL_DATABASE/" /darkstar/conf/$f
+            sed -i "s/^\(msg_server_ip:\s*\).*\$/\1$MSG_SERVER/" /darkstar/conf/$f
+            sed -i "s/^\(map_port:\s*\).*\$/\1$SERVER_PORT/" /darkstar/conf/$f
         fi
     done
 
-    sed -i "s/^\(servername:\s*\).*\$/\1$SERVERNAME/" /darkstar/conf/login_darkstar.conf
 }
 
 modConfig
