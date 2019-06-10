@@ -17,6 +17,7 @@ fi
 
 if [[ -f /docker-entrypoint-initdb.d/zoneip.sql.tpl ]]; then
   sed -i "s/{{ZONE_IP}}/$ZONE_IP/" /docker-entrypoint-initdb.d/zoneip.sql.tpl && \
+  sed -i "s/{{ZONE_PORT}}/$ZONE_PORT/" /docker-entrypoint-initdb.d/zoneip.sql.tpl && \
     mv /docker-entrypoint-initdb.d/zoneip.sql.tpl /docker-entrypoint-initdb.d/999-zoneip.sql
 fi
 
