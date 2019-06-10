@@ -4,8 +4,8 @@ volumes:
   db_data:
 services:
   darkstar-server-all:
-    container_name: darkstar-server-1
-    build: darkstar-server-1
+    container_name: darkstar-server-all
+    build: darkstar-server-all
     links:
     - darkstar-db
     environment:
