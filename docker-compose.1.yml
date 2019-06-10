@@ -21,7 +21,6 @@ services:
     - "54230:54230/udp"
     - "54231:54231"
     - "54001:54001"
-    - "55002:54002"
   darkstar-search:
     container_name: darkstar-search
     build: darkstar-search
@@ -50,8 +49,6 @@ services:
       SERVERNAME: ${SERVERNAME}
       SERVER_ONE_PORT: 54232
     ports:
-    - "55230:54230"
-    - "55231:54231"
     - "54232:54232"
   darkstar-db:
      container_name: darkstar-db
