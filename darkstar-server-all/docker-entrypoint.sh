@@ -11,7 +11,7 @@ SERVERNAME=${SERVERNAME:-DarkStar}
 
 ## modify configuration
 function modConfig() {
-    local db_files=(login_darkstar.conf)
+    local db_files=(login_darkstar.conf, search_server.conf, map_server.conf)
 
     for f in ${db_files[@]}
     do
