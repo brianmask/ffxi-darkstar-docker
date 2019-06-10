@@ -47,7 +47,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      SERVER_PORT: 54232
+      SERVER_ONE_PORT: 54232
     ports:
     - "54232:54232"
   darkstar-db:
