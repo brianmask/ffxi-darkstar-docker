@@ -100,9 +100,9 @@ services:
       MSG_SERVER_IP: darkstar-search
     ports:
     - "54232:54232/udp"
-  darkstar-server-3:
-    container_name: darkstar-server-3
-    build: darkstar-server-3
+  darkstar-server-4:
+    container_name: darkstar-server-4
+    build: darkstar-server-4
     links:
     - darkstar-db
     - darkstar-login
