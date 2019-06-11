@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ZONE_IP=${ZONE_IP:-10.0.0.254}
-ZONE_PORT=${ZONE_PORT:-54232}
+# ZONE_PORT=${ZONE_PORT:-54230}
 MYSQL_USER=${MYSQL_USER:-darkstar}
 MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD:-darkstar}
 MYSQL_PASSWORD=${MYSQL_PASSWORD:-darkstar}
@@ -17,7 +17,7 @@ fi
 
 if [[ -f /docker-entrypoint-initdb.d/zoneip.sql.tpl ]]; then
   sed -i "s/{{ZONE_IP}}/$ZONE_IP/" /docker-entrypoint-initdb.d/zoneip.sql.tpl && \
-  sed -i "s/{{ZONE_PORT}}/$ZONE_PORT/" /docker-entrypoint-initdb.d/zoneip.sql.tpl && \
+  # sed -i "s/{{ZONE_PORT}}/$ZONE_PORT/" /docker-entrypoint-initdb.d/zoneip.sql.tpl && \
     mv /docker-entrypoint-initdb.d/zoneip.sql.tpl /docker-entrypoint-initdb.d/999-zoneip.sql
 fi
 
