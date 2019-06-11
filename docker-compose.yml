@@ -102,7 +102,7 @@ services:
     - 8080:80
     environment:
       MYSQL_USERNAME: root
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_LOGIN}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       PMA_HOST: darkstar-db
   darkstar-db:
      container_name: darkstar-db
