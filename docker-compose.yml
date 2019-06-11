@@ -94,6 +94,51 @@ services:
       MSG_SERVER_IP: darkstar-search
     ports:
     - "54233:54233/udp"
+  darkstar-server-5:
+    container_name: darkstar-server-5
+    build: darkstar-server-5
+    links:
+    - darkstar-db
+    - darkstar-search
+    environment:
+      MYSQL_HOST: darkstar-db
+      MYSQL_LOGIN: ${MYSQL_LOGIN}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      SERVERNAME: ${SERVERNAME}
+      MSG_SERVER_IP: darkstar-search
+    ports:
+    - "54234:54234/udp"
+  darkstar-server-65:
+    container_name: darkstar-server-6
+    build: darkstar-server-6
+    links:
+    - darkstar-db
+    - darkstar-search
+    environment:
+      MYSQL_HOST: darkstar-db
+      MYSQL_LOGIN: ${MYSQL_LOGIN}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      SERVERNAME: ${SERVERNAME}
+      MSG_SERVER_IP: darkstar-search
+    ports:
+    - "54235:54235/udp"
+  darkstar-server-7:
+    container_name: darkstar-server-7
+    build: darkstar-server-7
+    links:
+    - darkstar-db
+    - darkstar-search
+    environment:
+      MYSQL_HOST: darkstar-db
+      MYSQL_LOGIN: ${MYSQL_LOGIN}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      SERVERNAME: ${SERVERNAME}
+      MSG_SERVER_IP: darkstar-search
+    ports:
+    - "54236:54236/udp"
   myadmin:
     image: phpmyadmin/phpmyadmin:latest
     links:
