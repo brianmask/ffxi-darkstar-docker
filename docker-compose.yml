@@ -9,10 +9,6 @@ services:
     links:
     - darkstar-db
     - darkstar-search
-    - darkstar-server-1
-    - darkstar-server-2
-    - darkstar-server-3
-    - darkstar-server-4
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -29,11 +25,6 @@ services:
     build: darkstar-search
     links:
     - darkstar-db
-    - darkstar-login
-    - darkstar-server-1
-    - darkstar-server-2
-    - darkstar-server-3
-    - darkstar-server-4
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -48,11 +39,7 @@ services:
     build: darkstar-server-1
     links:
     - darkstar-db
-    - darkstar-login
     - darkstar-search
-    - darkstar-server-2
-    - darkstar-server-3
-    - darkstar-server-4
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -67,11 +54,7 @@ services:
     build: darkstar-server-2
     links:
     - darkstar-db
-    - darkstar-login
     - darkstar-search
-    - darkstar-server-1
-    - darkstar-server-3
-    - darkstar-server-4
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -86,11 +69,7 @@ services:
     build: darkstar-server-3
     links:
     - darkstar-db
-    - darkstar-login
     - darkstar-search
-    - darkstar-server-1
-    - darkstar-server-2
-    - darkstar-server-4
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -105,11 +84,7 @@ services:
     build: darkstar-server-4
     links:
     - darkstar-db
-    - darkstar-login
     - darkstar-search
-    - darkstar-server-1
-    - darkstar-server-2
-    - darkstar-server-3
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
