@@ -30,8 +30,11 @@ instructions:
 * install latest docker CE (https://store.docker.com/search?type=edition&offering=community)
 * install latest docker-compose `$ pip install docker-compose`
 * clone repo `git clone <ffxi-darkstar-docker>`
-* cd into repo `cd ffxi-darkstar-docker`
-* start services `docker-compose up`
+* cd into base image `cd ffxi-darkstar-docker/darkstar-server`
+* build the base image `docker build --tag=darkstar-server-base .`
+* cd into the repo `cd ..`
+* start services `docker-compose up -d` 
+  + **first load of db is slow.  leave db running and restart other containers**
 
 ---
 
@@ -52,6 +55,12 @@ services are exposed on the (typical) ports:
 
 - `0.0.0.0:54230`
 - `0.0.0.0:54230/udp`
+- `0.0.0.0:54231/udp`
+- `0.0.0.0:54232/udp`
+- `0.0.0.0:54233/udp`
+- `0.0.0.0:54234/udp`
+- `0.0.0.0:54235/udp`
+- `0.0.0.0:54236/udp`
 - `0.0.0.0:54231`
 - `0.0.0.0:54001`
 - `0.0.0.0:54002`
@@ -59,9 +68,3 @@ services are exposed on the (typical) ports:
 
 ---
 
-considerations:
-
-* moving login/map/search to separate containers. this all depends on the applications ability to resolve dns names. parameters like `login_data_ip` make me think otherwise.
-* integration / build testing
-* more runtime environment configuration
-* ??? submit a PR

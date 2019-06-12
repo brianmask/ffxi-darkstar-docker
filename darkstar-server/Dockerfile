@@ -1,18 +1,17 @@
-FROM i386/ubuntu:bionic
+FROM i386/debian:buster
 
 ENV DS_BRANCH=master
 
 RUN apt-get update && \
-  apt-get install -y software-properties-common build-essential autoconf python-pip \ 
-  g++-7 luajit libzmq3-dev luarocks libmysqlclient-dev git python-setuptools && \
-  python /usr/lib/python2.7/dist-packages/easy_install.py supervisor && \
-  pip install supervisor-stdout && \
+  apt-get install -y software-properties-common build-essential autoconf && \
+  python-pip g++-7 liblua5.1-0-dev libzmq3-dev libmariadb-dev-compat git && \
+  pip install supervisor supervisor-stdout && \
   git clone --depth=1 -b ${DS_BRANCH} http://github.com/brianmask/darkstar.git/ /darkstar && \
   cd /darkstar && \
   sh autogen.sh && \
   ./configure --enable-debug=gdb && \
   make -j12 && \
-  apt-get autoremove -y build-essential git autoconf pkg-config software-properties-common && \
+  apt-get autoremove -y build-essential git autoconf pkg-config software-properties-common python-pip && \
   rm -rf /var/lib/apt/lists/* && \
   rm -rf /darkstar/src && \
   rm -rf /darkstar/sql && \
