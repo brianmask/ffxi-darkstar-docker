@@ -3,7 +3,7 @@ FROM i386/debian:buster
 ENV DS_BRANCH=master
 
 RUN apt-get update && \
-  apt-get install -y software-properties-common build-essential autoconf && \
+  apt-get install -y software-properties-common build-essential autoconf \
   python-pip g++-7 liblua5.1-0-dev libzmq3-dev libmariadb-dev-compat git && \
   pip install supervisor supervisor-stdout && \
   git clone --depth=1 -b ${DS_BRANCH} http://github.com/brianmask/darkstar.git/ /darkstar && \
