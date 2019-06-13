@@ -15,7 +15,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER_IP: darkstar-search
+      MSG_SERVER: darkstar-search
     ports:
     - "54230:54230"
     - "54231:54231"
@@ -61,7 +61,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER_IP: darkstar-search
+      MSG_SERVER: darkstar-search
     ports:
     - "54231:54230/udp"
   darkstar-server-3:
@@ -76,7 +76,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER_IP: darkstar-search
+      MSG_SERVER: darkstar-search
     ports:
     - "54232:54230/udp"
   darkstar-server-4:
@@ -91,7 +91,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER_IP: darkstar-search
+      MSG_SERVER: darkstar-search
     ports:
     - "54233:54230/udp"
   darkstar-server-5:
@@ -106,7 +106,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER_IP: darkstar-search
+      MSG_SERVER: darkstar-search
     ports:
     - "54234:54230/udp"
   darkstar-server-65:
@@ -121,7 +121,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER_IP: darkstar-search
+      MSG_SERVER: darkstar-search
     ports:
     - "54235:54230/udp"
   darkstar-server-7:
@@ -136,7 +136,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER_IP: darkstar-search
+      MSG_SERVER: darkstar-search
     ports:
     - "54236:54230/udp"
   myadmin:
