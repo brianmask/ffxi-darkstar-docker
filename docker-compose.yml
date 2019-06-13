@@ -190,7 +190,7 @@ services:
        MYSQL_DATABASE: ${MYSQL_DATABASE}
        MYSQL_USER: ${MYSQL_LOGIN}
        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      networks:
+     networks:
       testing_net:
         ipv4_address: 172.30.1.1
 
