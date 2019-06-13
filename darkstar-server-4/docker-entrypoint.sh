@@ -30,4 +30,4 @@ function modConfig() {
 
 modConfig
 
-exec /usr/local/bin/supervisord
+exec /darkstar/dsgame

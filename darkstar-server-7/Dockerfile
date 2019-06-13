@@ -7,7 +7,7 @@ COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod a+x /usr/local/bin/docker-entrypoint.sh
 
 USER darkstar
-EXPOSE 54236/udp
+EXPOSE 54230/udp
 WORKDIR /darkstar
 
 USER darkstar

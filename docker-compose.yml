@@ -63,7 +63,7 @@ services:
       SERVERNAME: ${SERVERNAME}
       MSG_SERVER_IP: darkstar-search
     ports:
-    - "54231:54231/udp"
+    - "54231:54230/udp"
   darkstar-server-3:
     container_name: darkstar-server-3
     build: darkstar-server-3
@@ -78,7 +78,7 @@ services:
       SERVERNAME: ${SERVERNAME}
       MSG_SERVER_IP: darkstar-search
     ports:
-    - "54232:54232/udp"
+    - "54232:54230/udp"
   darkstar-server-4:
     container_name: darkstar-server-4
     build: darkstar-server-4
@@ -93,7 +93,7 @@ services:
       SERVERNAME: ${SERVERNAME}
       MSG_SERVER_IP: darkstar-search
     ports:
-    - "54233:54233/udp"
+    - "54233:54230/udp"
   darkstar-server-5:
     container_name: darkstar-server-5
     build: darkstar-server-5
@@ -108,7 +108,7 @@ services:
       SERVERNAME: ${SERVERNAME}
       MSG_SERVER_IP: darkstar-search
     ports:
-    - "54234:54234/udp"
+    - "54234:54230/udp"
   darkstar-server-65:
     container_name: darkstar-server-6
     build: darkstar-server-6
@@ -123,7 +123,7 @@ services:
       SERVERNAME: ${SERVERNAME}
       MSG_SERVER_IP: darkstar-search
     ports:
-    - "54235:54235/udp"
+    - "54235:54230/udp"
   darkstar-server-7:
     container_name: darkstar-server-7
     build: darkstar-server-7
@@ -138,7 +138,7 @@ services:
       SERVERNAME: ${SERVERNAME}
       MSG_SERVER_IP: darkstar-search
     ports:
-    - "54236:54236/udp"
+    - "54236:54230/udp"
   myadmin:
     image: phpmyadmin/phpmyadmin:latest
     links:
