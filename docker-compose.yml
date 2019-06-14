@@ -197,6 +197,6 @@ services:
 networks:
   ffxi-docker:
     ipam:
-      driver: default
+      driver: macvlan
       config:
         - subnet: 10.10.10.0/24
