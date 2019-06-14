@@ -200,3 +200,5 @@ networks:
       driver: macvlan
       config:
         - subnet: 10.10.10.0/24
+        - gateway: 10.10.10.254
+        - parent: :enp0s3
