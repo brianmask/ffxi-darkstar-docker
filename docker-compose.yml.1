@@ -14,10 +14,10 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 172.31.0.4
+      MSG_SERVER: 10.0.0.254
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.4
+        ipv4_address: 172.30.1.3
     ports:
     - "54230:54230"
     - "54231:54231"
@@ -36,7 +36,7 @@ services:
       SERVERNAME: ${SERVERNAME}
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.5
+        ipv4_address: 172.30.1.4
     ports:
     - "54002:54002"
   darkstar-server-1:
@@ -54,7 +54,7 @@ services:
       MSG_SERVER: 10.0.0.254
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.6
+        ipv4_address: 172.30.1.5
     ports:
     - "54230:54230/udp"
   darkstar-server-2:
@@ -72,7 +72,7 @@ services:
       MSG_SERVER: 10.0.0.254
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.7
+        ipv4_address: 172.30.1.6
     ports:
     - "54231:54230/udp"
   darkstar-server-3:
@@ -90,7 +90,7 @@ services:
       MSG_SERVER: 10.0.0.254
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.8
+        ipv4_address: 172.30.1.7
     ports:
     - "54232:54230/udp"
   darkstar-server-4:
@@ -108,7 +108,7 @@ services:
       MSG_SERVER: 10.0.0.254
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.9
+        ipv4_address: 172.30.1.8
     ports:
     - "54233:54230/udp"
   darkstar-server-5:
@@ -126,7 +126,7 @@ services:
       MSG_SERVER: 10.0.0.254
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.10
+        ipv4_address: 172.30.1.9
     ports:
     - "54234:54230/udp"
   darkstar-server-65:
@@ -144,7 +144,7 @@ services:
       MSG_SERVER: 10.0.0.254
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.11
+        ipv4_address: 172.30.1.10
     ports:
     - "54235:54230/udp"
   darkstar-server-7:
@@ -162,7 +162,7 @@ services:
       MSG_SERVER: 10.0.0.254
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.12
+        ipv4_address: 172.30.1.11
     ports:
     - "54236:54230/udp"
   myadmin:
@@ -177,7 +177,7 @@ services:
       PMA_HOST: darkstar-db
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.3
+        ipv4_address: 172.30.1.2
   darkstar-db:
      container_name: darkstar-db
      build: darkstar-db
@@ -192,11 +192,11 @@ services:
        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
      networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.2
+        ipv4_address: 172.30.1.1
 
 networks:
-      ffxi-docker:
-        driver: bridge
-        ipam:
-          config:
-          - subnet: 172.31.0.0/16
+  ffxi-docker:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.30.0.0/16
