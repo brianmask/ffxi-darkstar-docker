@@ -21,6 +21,7 @@ services:
     - "54231:54231"
     - "54001:54001"
     - "54003:54003"
+    - "54003:54003/udp"
   darkstar-search:
     container_name: darkstar-search
     build: darkstar-search
@@ -169,7 +170,7 @@ services:
 
 networks:
       ffxi-docker:
-        driver: host
+        driver: bridge
         ipam:
           config:
           - subnet: 172.31.0.0/16
