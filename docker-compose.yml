@@ -13,8 +13,9 @@ services:
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
       MSG_SERVER: 0.0.0.0
-    links:
-    - darkstar-db
+    networks:
+      ffxi-docker:
+        ipv4_address: 172.31.0.4
     ports:
     - "54230:54230"
     - "54231:54231"
@@ -31,10 +32,13 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-    links:
-    - darkstar-db
+    networks:
+      ffxi-docker:
+        ipv4_address: 172.31.0.5
     ports:
     - "54002:54002"
+    depends_on:
+    - "darkstar-db"
   darkstar-server-1:
     container_name: darkstar-server-1
     build: darkstar-server-1
@@ -44,12 +48,14 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: darkstar-login
-    links:
-    - darkstar-db
-    - darkstar-login
+      MSG_SERVER: 172.31.0.4
+    networks:
+      ffxi-docker:
+        ipv4_address: 172.31.0.6
     ports:
     - "54230:54230/udp"
+    depends_on:
+    - "darkstar-db"
   darkstar-server-2:
     container_name: darkstar-server-2
     build: darkstar-server-2
@@ -59,12 +65,14 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: darkstar-login
-    links:
-    - darkstar-db
-    - darkstar-login
+      MSG_SERVER: 172.31.0.4
+    networks:
+      ffxi-docker:
+        ipv4_address: 172.31.0.7
     ports:
     - "54231:54231/udp"
+    depends_on:
+    - "darkstar-db"
   darkstar-server-3:
     container_name: darkstar-server-3
     build: darkstar-server-3
@@ -74,12 +82,14 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: darkstar-login
-    links:
-    - darkstar-db
-    - darkstar-login
+      MSG_SERVER: 172.31.0.4
+    networks:
+      ffxi-docker:
+        ipv4_address: 172.31.0.8
     ports:
     - "54232:54232/udp"
+    depends_on:
+    - "darkstar-db"
   darkstar-server-4:
     container_name: darkstar-server-4
     build: darkstar-server-4
@@ -89,12 +99,14 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: darkstar-login
-    links:
-    - darkstar-db
-    - darkstar-login
+      MSG_SERVER: 172.31.0.4
+    networks:
+      ffxi-docker:
+        ipv4_address: 172.31.0.9
     ports:
     - "54233:54233/udp"
+    depends_on:
+    - "darkstar-db"
   darkstar-server-5:
     container_name: darkstar-server-5
     build: darkstar-server-5
@@ -104,12 +116,14 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: darkstar-login
-    links:
-    - darkstar-db
-    - darkstar-login
+      MSG_SERVER: 172.31.0.4
+    networks:
+      ffxi-docker:
+        ipv4_address: 172.31.0.10
     ports:
     - "54234:54234/udp"
+    depends_on:
+    - "darkstar-db"
   darkstar-server-65:
     container_name: darkstar-server-6
     build: darkstar-server-6
@@ -119,12 +133,14 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: darkstar-login
+      MSG_SERVER: 172.31.0.4
+    networks:
+      ffxi-docker:
+        ipv4_address: 172.31.0.11
     ports:
     - "54235:54235/udp"
-    links:
-    - darkstar-db
-    - darkstar-login
+    depends_on:
+    - "darkstar-db"
   darkstar-server-7:
     container_name: darkstar-server-7
     build: darkstar-server-7
@@ -134,22 +150,27 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: darkstar-login
+      MSG_SERVER: 172.31.0.4
+    networks:
+      ffxi-docker:
+        ipv4_address: 172.31.0.12
     ports:
     - "54236:54236/udp"
-    links:
-    - darkstar-db
-    - darkstar-login
+    depends_on:
+    - "darkstar-db"
   myadmin:
     image: phpmyadmin/phpmyadmin:latest
     ports:
     - 8080:80
-    links:
-    - darkstar-db
+    depends_on:
+    - "darkstar-db"
     environment:
       MYSQL_USERNAME: root
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       PMA_HOST: darkstar-db
+    networks:
+      ffxi-docker:
+        ipv4_address: 172.31.0.3
   darkstar-db:
      container_name: darkstar-db
      build: darkstar-db
@@ -162,5 +183,13 @@ services:
        MYSQL_DATABASE: ${MYSQL_DATABASE}
        MYSQL_USER: ${MYSQL_LOGIN}
        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+     networks:
+      ffxi-docker:
+        ipv4_address: 172.31.0.2
 
-
+networks:
+      ffxi-docker:
+        driver: bridge
+        ipam:
+          config:
+          - subnet: 172.31.0.0/16
