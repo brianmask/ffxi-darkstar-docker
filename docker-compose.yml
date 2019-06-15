@@ -22,6 +22,8 @@ services:
     - "54001:54001"
     - "54003:54003"
     - "54003:54003/udp"
+    depends_on:
+    - "darkstar-db"
   darkstar-search:
     container_name: darkstar-search
     build: darkstar-search
@@ -36,6 +38,8 @@ services:
         ipv4_address: 172.31.0.5
     ports:
     - "54002:54002"
+    depends_on:
+    - "darkstar-db"
   darkstar-server-1:
     container_name: darkstar-server-1
     build: darkstar-server-1
@@ -51,6 +55,8 @@ services:
         ipv4_address: 172.31.0.6
     ports:
     - "54230:54230/udp"
+    depends_on:
+    - "darkstar-db"
   darkstar-server-2:
     container_name: darkstar-server-2
     build: darkstar-server-2
@@ -66,6 +72,8 @@ services:
         ipv4_address: 172.31.0.7
     ports:
     - "54231:54231/udp"
+    depends_on:
+    - "darkstar-db"
   darkstar-server-3:
     container_name: darkstar-server-3
     build: darkstar-server-3
@@ -81,6 +89,8 @@ services:
         ipv4_address: 172.31.0.8
     ports:
     - "54232:54232/udp"
+    depends_on:
+    - "darkstar-db"
   darkstar-server-4:
     container_name: darkstar-server-4
     build: darkstar-server-4
@@ -96,6 +106,8 @@ services:
         ipv4_address: 172.31.0.9
     ports:
     - "54233:54233/udp"
+    depends_on:
+    - "darkstar-db"
   darkstar-server-5:
     container_name: darkstar-server-5
     build: darkstar-server-5
@@ -111,6 +123,8 @@ services:
         ipv4_address: 172.31.0.10
     ports:
     - "54234:54234/udp"
+    depends_on:
+    - "darkstar-db"
   darkstar-server-65:
     container_name: darkstar-server-6
     build: darkstar-server-6
@@ -126,6 +140,8 @@ services:
         ipv4_address: 172.31.0.11
     ports:
     - "54235:54235/udp"
+    depends_on:
+    - "darkstar-db"
   darkstar-server-7:
     container_name: darkstar-server-7
     build: darkstar-server-7
@@ -141,10 +157,14 @@ services:
         ipv4_address: 172.31.0.12
     ports:
     - "54236:54236/udp"
+    depends_on:
+    - "darkstar-db"
   myadmin:
     image: phpmyadmin/phpmyadmin:latest
     ports:
     - 8080:80
+    depends_on:
+    - "darkstar-db"
     environment:
       MYSQL_USERNAME: root
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
