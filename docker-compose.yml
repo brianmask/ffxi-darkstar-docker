@@ -12,7 +12,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 172.31.0.4
+      MSG_SERVER: 0.0.0.0
     networks:
       ffxi-docker:
         ipv4_address: 172.31.0.4
@@ -21,7 +21,6 @@ services:
     - "54231:54231"
     - "54001:54001"
     - "54003:54003"
-    - "54003:54003/udp"
     depends_on:
     - "darkstar-db"
   darkstar-search:
