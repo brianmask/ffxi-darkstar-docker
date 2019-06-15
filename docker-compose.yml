@@ -6,8 +6,6 @@ services:
   darkstar-login:
     container_name: darkstar-login
     build: darkstar-login
-    links:
-    - darkstar-db
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -26,8 +24,6 @@ services:
   darkstar-search:
     container_name: darkstar-search
     build: darkstar-search
-    links:
-    - darkstar-db
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -42,16 +38,13 @@ services:
   darkstar-server-1:
     container_name: darkstar-server-1
     build: darkstar-server-1
-    links:
-    - darkstar-db
-    - darkstar-login
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.0.0.254
+      MSG_SERVER: 172.31.0.4
     networks:
       ffxi-docker:
         ipv4_address: 172.31.0.6
@@ -60,16 +53,13 @@ services:
   darkstar-server-2:
     container_name: darkstar-server-2
     build: darkstar-server-2
-    links:
-    - darkstar-db
-    - darkstar-login
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.0.0.254
+      MSG_SERVER: 172.31.0.4
     networks:
       ffxi-docker:
         ipv4_address: 172.31.0.7
@@ -78,16 +68,13 @@ services:
   darkstar-server-3:
     container_name: darkstar-server-3
     build: darkstar-server-3
-    links:
-    - darkstar-db
-    - darkstar-login
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.0.0.254
+      MSG_SERVER: 172.31.0.4
     networks:
       ffxi-docker:
         ipv4_address: 172.31.0.8
@@ -96,16 +83,13 @@ services:
   darkstar-server-4:
     container_name: darkstar-server-4
     build: darkstar-server-4
-    links:
-    - darkstar-db
-    - darkstar-login
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.0.0.254
+      MSG_SERVER: 172.31.0.4
     networks:
       ffxi-docker:
         ipv4_address: 172.31.0.9
@@ -114,16 +98,13 @@ services:
   darkstar-server-5:
     container_name: darkstar-server-5
     build: darkstar-server-5
-    links:
-    - darkstar-db
-    - darkstar-login
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.0.0.254
+      MSG_SERVER: 172.31.0.4
     networks:
       ffxi-docker:
         ipv4_address: 172.31.0.10
@@ -132,16 +113,13 @@ services:
   darkstar-server-65:
     container_name: darkstar-server-6
     build: darkstar-server-6
-    links:
-    - darkstar-db
-    - darkstar-login
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.0.0.254
+      MSG_SERVER: 172.31.0.4
     networks:
       ffxi-docker:
         ipv4_address: 172.31.0.11
@@ -150,16 +128,13 @@ services:
   darkstar-server-7:
     container_name: darkstar-server-7
     build: darkstar-server-7
-    links:
-    - darkstar-db
-    - darkstar-login
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.0.0.254
+      MSG_SERVER: 172.31.0.4
     networks:
       ffxi-docker:
         ipv4_address: 172.31.0.12
@@ -167,8 +142,6 @@ services:
     - "54236:54230/udp"
   myadmin:
     image: phpmyadmin/phpmyadmin:latest
-    links:
-    - darkstar-db
     ports:
     - 8080:80
     environment:
