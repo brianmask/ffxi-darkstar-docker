@@ -15,7 +15,7 @@ services:
       MSG_SERVER: 0.0.0.0
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.4
+        ipv4_address: 10.10.10.4
     ports:
     - "54230:54230"
     - "54231:54231"
@@ -34,7 +34,7 @@ services:
       SERVERNAME: ${SERVERNAME}
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.5
+        ipv4_address: 10.10.10.5
     ports:
     - "54002:54002"
     depends_on:
@@ -48,10 +48,10 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 172.31.0.4
+      MSG_SERVER: 10.10.10.4
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.6
+        ipv4_address: 10.10.10.6
     ports:
     - "54230:54230/udp"
     depends_on:
@@ -65,10 +65,10 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 172.31.0.4
+      MSG_SERVER: 10.10.10.4
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.7
+        ipv4_address: 10.10.10.7
     ports:
     - "54231:54231/udp"
     depends_on:
@@ -82,10 +82,10 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 172.31.0.4
+      MSG_SERVER: 10.10.10.4
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.8
+        ipv4_address: 10.10.10.8
     ports:
     - "54232:54232/udp"
     depends_on:
@@ -99,10 +99,10 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 172.31.0.4
+      MSG_SERVER: 10.10.10.4
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.9
+        ipv4_address: 10.10.10.9
     ports:
     - "54233:54233/udp"
     depends_on:
@@ -116,10 +116,10 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 172.31.0.4
+      MSG_SERVER: 10.10.10.4
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.10
+        ipv4_address: 10.10.10.10
     ports:
     - "54234:54234/udp"
     depends_on:
@@ -133,10 +133,10 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 172.31.0.4
+      MSG_SERVER: 10.10.10.4
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.11
+        ipv4_address: 10.10.10.11
     ports:
     - "54235:54235/udp"
     depends_on:
@@ -150,10 +150,10 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 172.31.0.4
+      MSG_SERVER: 10.10.10.4
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.12
+        ipv4_address: 10.10.10.12
     ports:
     - "54236:54236/udp"
     depends_on:
@@ -170,7 +170,7 @@ services:
       PMA_HOST: darkstar-db
     networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.3
+        ipv4_address: 10.10.10.3
   darkstar-db:
      container_name: darkstar-db
      build: darkstar-db
@@ -185,11 +185,16 @@ services:
        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
      networks:
       ffxi-docker:
-        ipv4_address: 172.31.0.2
+        ipv4_address: 10.10.10.2
 
 networks:
       ffxi-docker:
-        driver: bridge
+        driver: macvlan
+        driver_opts:
+          parent: enp0s3
         ipam:
           config:
-          - subnet: 172.31.0.0/16
+          - subnet: 10.0.0.0/8
+            gateway: 10.0.0.1
+            ip_range: 10.10.10.0/24
+            aux_address: "host=10.10.10.254"
