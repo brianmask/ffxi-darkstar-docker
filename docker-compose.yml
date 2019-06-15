@@ -64,7 +64,7 @@ services:
       ffxi-docker:
         ipv4_address: 172.31.0.7
     ports:
-    - "54231:54230/udp"
+    - "54231:54231/udp"
   darkstar-server-3:
     container_name: darkstar-server-3
     build: darkstar-server-3
@@ -79,7 +79,7 @@ services:
       ffxi-docker:
         ipv4_address: 172.31.0.8
     ports:
-    - "54232:54230/udp"
+    - "54232:54232/udp"
   darkstar-server-4:
     container_name: darkstar-server-4
     build: darkstar-server-4
@@ -94,7 +94,7 @@ services:
       ffxi-docker:
         ipv4_address: 172.31.0.9
     ports:
-    - "54233:54230/udp"
+    - "54233:54233/udp"
   darkstar-server-5:
     container_name: darkstar-server-5
     build: darkstar-server-5
@@ -109,7 +109,7 @@ services:
       ffxi-docker:
         ipv4_address: 172.31.0.10
     ports:
-    - "54234:54230/udp"
+    - "54234:54234/udp"
   darkstar-server-65:
     container_name: darkstar-server-6
     build: darkstar-server-6
@@ -124,7 +124,7 @@ services:
       ffxi-docker:
         ipv4_address: 172.31.0.11
     ports:
-    - "54235:54230/udp"
+    - "54235:54235/udp"
   darkstar-server-7:
     container_name: darkstar-server-7
     build: darkstar-server-7
@@ -139,7 +139,7 @@ services:
       ffxi-docker:
         ipv4_address: 172.31.0.12
     ports:
-    - "54236:54230/udp"
+    - "54236:54236/udp"
   myadmin:
     image: phpmyadmin/phpmyadmin:latest
     ports:
@@ -169,7 +169,7 @@ services:
 
 networks:
       ffxi-docker:
-        driver: bridge
+        driver: host
         ipam:
           config:
           - subnet: 172.31.0.0/16
