@@ -41,7 +41,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 0.0.0.0
+      MSG_SERVER: darkstar-login
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.6
@@ -56,7 +56,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 0.0.0.0
+      MSG_SERVER: darkstar-login
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.7
@@ -71,7 +71,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 0.0.0.0
+      MSG_SERVER: darkstar-login
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.8
@@ -86,7 +86,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 0.0.0.0
+      MSG_SERVER: darkstar-login
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.9
@@ -101,7 +101,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 0.0.0.0
+      MSG_SERVER: darkstar-login
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.10
@@ -116,7 +116,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 0.0.0.0
+      MSG_SERVER: darkstar-login
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.11
@@ -131,7 +131,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 0.0.0.0
+      MSG_SERVER: darkstar-login
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.12
@@ -169,6 +169,6 @@ networks:
           parent: enp5s0
         ipam:
           config:
-          - subnet: 10.0.0.0/8
+          - subnet: 1darkstar-login/8
             gateway: 10.0.0.1
             ip_range: 10.10.10.0/24
