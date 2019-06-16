@@ -4,7 +4,8 @@ ENV DS_BRANCH=master
 
 RUN apt-get update && \
   apt-get install -y software-properties-common build-essential autoconf \
-  g++-7 liblua5.1-0-dev libzmq3-dev libmariadb-dev-compat git && \
+  g++-7 liblua5.1-0-dev libzmq3-dev libmariadb-dev-compat git python-pip && \
+  pip install supervisor supervisor-stdout && \
   git clone --depth=1 -b ${DS_BRANCH} http://github.com/brianmask/darkstar.git/ /darkstar && \
   cd /darkstar && \
   sh autogen.sh && \
@@ -19,4 +20,3 @@ RUN apt-get update && \
   useradd -g darkstar -ms /bin/bash darkstar && \
   chown -R darkstar:darkstar /darkstar
 
-  
