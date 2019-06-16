@@ -30,8 +30,6 @@ services:
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.5
-    ports:
-    - "54002:54002"
     depends_on:
     - "darkstar-db"
   darkstar-server-1:
@@ -47,8 +45,6 @@ services:
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.6
-    ports:
-    - "54230:54230/udp"
     depends_on:
     - "darkstar-db"
   darkstar-server-2:
@@ -64,8 +60,6 @@ services:
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.7
-    ports:
-    - "54231:54231/udp"
     depends_on:
     - "darkstar-db"
   darkstar-server-3:
@@ -81,8 +75,6 @@ services:
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.8
-    ports:
-    - "54232:54232/udp"
     depends_on:
     - "darkstar-db"
   darkstar-server-4:
@@ -98,8 +90,6 @@ services:
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.9
-    ports:
-    - "54233:54233/udp"
     depends_on:
     - "darkstar-db"
   darkstar-server-5:
@@ -115,8 +105,6 @@ services:
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.10
-    ports:
-    - "54234:54234/udp"
     depends_on:
     - "darkstar-db"
   darkstar-server-65:
@@ -132,8 +120,6 @@ services:
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.11
-    ports:
-    - "54235:54235/udp"
     depends_on:
     - "darkstar-db"
   darkstar-server-7:
@@ -149,14 +135,10 @@ services:
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.12
-    ports:
-    - "54236:54236/udp"
     depends_on:
     - "darkstar-db"
   myadmin:
     image: phpmyadmin/phpmyadmin:latest
-    ports:
-    - 8080:80
     depends_on:
     - "darkstar-db"
     environment:
@@ -169,8 +151,6 @@ services:
   darkstar-db:
      container_name: darkstar-db
      build: darkstar-db
-     ports:
-     - "23055:3306"
      volumes:
      - db_data:/var/lib/mysql
      environment:
