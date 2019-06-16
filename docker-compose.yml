@@ -26,6 +26,7 @@ services:
     - "54236:54236/udp"
     - "54001:54001"
     - "54002:54002"
+    - "54003:54003"
   darkstar-db:
      container_name: darkstar-db
      build: darkstar-db
