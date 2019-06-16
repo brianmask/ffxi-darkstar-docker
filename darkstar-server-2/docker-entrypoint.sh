@@ -30,4 +30,4 @@ function modConfig() {
 
 modConfig
 
-exec /darkstar/dsgame --port 54231
+exec /darkstar/dsgame --ip 10.10.10.7 --port 54231
