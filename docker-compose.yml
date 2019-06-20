@@ -12,10 +12,10 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      #MSG_SERVER: 10.10.10.4
-    #networks:
-    #  ffxi-docker:
-    #    ipv4_address: 10.10.10.4
+      MSG_SERVER: 10.10.10.4
+    networks:
+      ffxi-docker:
+        ipv4_address: 10.10.10.4
     depends_on:
     - "darkstar-db"
     ports:
@@ -32,9 +32,9 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-    #networks:
-    #  ffxi-docker:
-    #    ipv4_address: 10.10.10.5
+    networks:
+      ffxi-docker:
+        ipv4_address: 10.10.10.5
     depends_on:
     - "darkstar-db"
     ports:
@@ -48,10 +48,10 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      #MSG_SERVER: 10.10.10.4
-    #networks:
-    #  ffxi-docker:
-    #    ipv4_address: 10.10.10.6
+      MSG_SERVER: 10.10.10.4
+    networks:
+      ffxi-docker:
+        ipv4_address: 10.10.10.6
     depends_on:
     - "darkstar-db"
     - "darkstar-login"
@@ -67,9 +67,9 @@ services:
       MYSQL_USERNAME: root
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       PMA_HOST: darkstar-db
-    #networks:
-    #  ffxi-docker:
-    #    ipv4_address: 10.10.10.3
+    networks:
+      ffxi-docker:
+        ipv4_address: 10.10.10.3
   darkstar-db:
      container_name: darkstar-db
      build: darkstar-db
@@ -81,17 +81,17 @@ services:
        MYSQL_USER: ${MYSQL_LOGIN}
        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
        ZONE_IP: ${ZONE_IP}
-     #networks:
-     # ffxi-docker:
-     #   ipv4_address: 10.10.10.2
+    networks:
+      ffxi-docker:
+        ipv4_address: 10.10.10.2
 
-#networks:
-#      ffxi-docker:
-#        driver: macvlan
-#        driver_opts:
-#          parent: enp5s0
-#        ipam:
-#          config:
-#          - subnet: 10.0.0.0/8
-#            gateway: 10.0.0.1
-#            ip_range: 10.10.10.0/24
+networks:
+      ffxi-docker:
+        driver: bridge
+        #driver_opts:
+        #  parent: enp5s0
+        ipam:
+          config:
+          - subnet: 10.10.10.10/24
+            gateway: 10.10.10.1
+            ip_range: 10.10.10.0/24
