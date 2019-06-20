@@ -81,9 +81,9 @@ services:
        MYSQL_USER: ${MYSQL_LOGIN}
        MYSQL_PASSWORD: ${MYSQL_PASSWORD}
        ZONE_IP: ${ZONE_IP}
-    networks:
-      ffxi-docker:
-        ipv4_address: 10.10.10.2
+     networks:
+       ffxi-docker:
+         ipv4_address: 10.10.10.2
 
 networks:
       ffxi-docker:
