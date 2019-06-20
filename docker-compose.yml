@@ -113,7 +113,7 @@ services:
     - "darkstar-db"
     - "darkstar-login"
   darkstar-server-6:
-    container_name: darkstar-server-26
+    container_name: darkstar-server-6
     build: darkstar-server-6
     environment:
       MYSQL_HOST: darkstar-db
