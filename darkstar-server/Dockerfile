@@ -15,7 +15,7 @@ RUN apt-get update && \
   rm -rf /var/lib/apt/lists/* && \
   rm -rf /darkstar/src && \
   rm -rf /darkstar/sql && \
-  rm -rf /darkstar/*.o && \
+  rm -rf /darkstar/*.o 
 
 FROM i386/debian:buster 
 
