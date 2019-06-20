@@ -35,6 +35,7 @@ instructions:
 * cd into the repo `cd ..`
 * start services `docker-compose up -d` 
   + **first load of db is slow.  leave db running and restart other containers**
+  + **`docker-compose up -d darkstar-db` then waiting a few minutes is recommended for first start**
 
 ---
 
@@ -43,7 +44,8 @@ admin:
 * `docker-compose build` will force images to rebuild. to force a pull from darkstar `stable`, issue the build command with a `--no-cache` argument. 
 * `docker-compose restart` will ... restart
 * `docker-compose down -v` will nuke your database if you decide to forego the advice of using an external volume
-* connect to `0.0.0.0:23055` to with your (MySQL) database tool of choice. use the credentials defined in `.env`; or the default `darkstar:darkstar`
+* connect to `10.10.10.2` to with your (MySQL) database tool of choice. use the credentials defined in `.env`; or the default `darkstar:darkstar`
+* phpmyadmin is running at 10.10.10.3 for easy database management
 
 ---
 
@@ -68,3 +70,6 @@ services are exposed on the (typical) ports:
 
 ---
 
+Inspiration for this repo taken from:
+https://github.com/notsureifkevin/ffxi-darkstar-docker
+https://github.com/Korrbit/ffxi-darkstar-octopus.git
