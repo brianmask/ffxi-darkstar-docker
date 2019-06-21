@@ -5,7 +5,7 @@ volumes:
 services:
   darkstar-lobby:
     container_name: darkstar-lobby
-    build: darkstar-login
+    build: darkstar-lobby
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -21,7 +21,7 @@ services:
 
   darkstar-server-1:
     container_name: darkstar-server-1
-    build: darkstar-server-1
+    build: darkstar-server
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -40,7 +40,7 @@ services:
   
   darkstar-server-2:
     container_name: darkstar-server-2
-    build: darkstar-server-1
+    build: darkstar-server
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -59,7 +59,7 @@ services:
 
   darkstar-server-3:
     container_name: darkstar-server-3
-    build: darkstar-server-1
+    build: darkstar-server
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -78,7 +78,7 @@ services:
 
   darkstar-server-4:
     container_name: darkstar-server-4
-    build: darkstar-server-1
+    build: darkstar-server
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -97,7 +97,7 @@ services:
 
   darkstar-server-5:
     container_name: darkstar-server-5
-    build: darkstar-server-1
+    build: darkstar-server
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -116,7 +116,7 @@ services:
 
   darkstar-server-6:
     container_name: darkstar-server-6
-    build: darkstar-server-1
+    build: darkstar-server
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -135,7 +135,7 @@ services:
 
   darkstar-server-7:
     container_name: darkstar-server-7
-    build: darkstar-server-1
+    build: darkstar-server
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
