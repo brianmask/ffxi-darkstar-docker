@@ -175,11 +175,11 @@ services:
 
 networks:
       ffxi-docker:
-        driver: macvlan
-        driver_opts:
-          parent: enp5s0
+        driver: bridge
+        #driver_opts:
+        #  parent: enp5s0
         ipam:
           config:
-          - subnet: 10.0.0.0/8
-            gateway: 10.0.0.1
-            ip_range: 10.10.10.0/24
+          - subnet: 10.10.10.0/22
+            gateway: 10.10.10.1
+            ip_range: 10.10.10.0/22
