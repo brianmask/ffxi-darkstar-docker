@@ -5,7 +5,7 @@ volumes:
 services:
   darkstar-lobby:
     container_name: darkstar-lobby
-    build: darkstar-lobby
+    build: darkstar-login
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
