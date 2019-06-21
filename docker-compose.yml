@@ -187,7 +187,7 @@ services:
 
 networks:
       ffxi-docker:
-        driver: bridge
+        driver: macvlan
         driver_opts:
           parent: enp5s0
         ipam:
