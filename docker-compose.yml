@@ -5,7 +5,7 @@ volumes:
 services:
   darkstar-lobby:
     container_name: darkstar-lobby
-    build: darkstar-login
+    build: darkstar-lobby
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
@@ -36,7 +36,7 @@ services:
         ipv4_address: 10.10.11.0
     depends_on:
     - "darkstar-db"
-    - "darkstar-login"
+    - "darkstar-lobby"
   
   darkstar-server-2:
     container_name: darkstar-server-2
@@ -55,7 +55,7 @@ services:
         ipv4_address: 10.10.11.1
     depends_on:
     - "darkstar-db"
-    - "darkstar-login"
+    - "darkstar-lobby"
 
   darkstar-server-3:
     container_name: darkstar-server-3
@@ -74,7 +74,7 @@ services:
         ipv4_address: 10.10.11.2
     depends_on:
     - "darkstar-db"
-    - "darkstar-login"
+    - "darkstar-lobby"
 
   darkstar-server-4:
     container_name: darkstar-server-4
@@ -93,7 +93,7 @@ services:
         ipv4_address: 10.10.11.3
     depends_on:
     - "darkstar-db"
-    - "darkstar-login"
+    - "darkstar-lobby"
 
   darkstar-server-5:
     container_name: darkstar-server-5
@@ -112,7 +112,7 @@ services:
         ipv4_address: 10.10.11.4
     depends_on:
     - "darkstar-db"
-    - "darkstar-login"
+    - "darkstar-lobby"
 
   darkstar-server-6:
     container_name: darkstar-server-6
@@ -131,7 +131,7 @@ services:
         ipv4_address: 10.10.11.5
     depends_on:
     - "darkstar-db"
-    - "darkstar-login"
+    - "darkstar-lobby"
 
   darkstar-server-7:
     container_name: darkstar-server-7
@@ -150,7 +150,7 @@ services:
         ipv4_address: 10.10.11.6
     depends_on:
     - "darkstar-db"
-    - "darkstar-login"
+    - "darkstar-lobby"
 
   #broker:
   #  container_name: broker
