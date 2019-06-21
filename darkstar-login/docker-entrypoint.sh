@@ -12,7 +12,7 @@ MSG_SERVER=${MSG_SERVER:-127.0.0.1}
 
 ## modify configuration
 function modConfig() {
-    local db_files=(login_darkstar.conf)
+    local db_files=(login_darkstar.conf search_server.con)
 
     for f in ${db_files[@]}
     do
@@ -31,4 +31,4 @@ function modConfig() {
 
 modConfig
 
-exec /darkstar/dsconnect
+exec /usr/local/bin/supervisord
