@@ -19,7 +19,7 @@ services:
     depends_on:
     - "darkstar-db"
 
-    darkstar-server-1:
+  darkstar-server-1:
     container_name: darkstar-server-1
     build: darkstar-server-1
     environment:
@@ -38,7 +38,7 @@ services:
     - "darkstar-db"
     - "darkstar-login"
   
-    darkstar-server-2:
+  darkstar-server-2:
     container_name: darkstar-server-2
     build: darkstar-server-1
     environment:
