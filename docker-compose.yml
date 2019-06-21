@@ -4,7 +4,7 @@ volumes:
   db_data:
 services:
   darkstar-login:
-    container_name: darkstar-login
+    container_name: darkstar-lobby
     build: darkstar-login
     environment:
       MYSQL_HOST: darkstar-db
@@ -18,20 +18,23 @@ services:
         ipv4_address: 10.10.10.4
     depends_on:
     - "darkstar-db"
-  darkstar-search:
-    container_name: darkstar-search
-    build: darkstar-search
-    environment:
-      MYSQL_HOST: darkstar-db
-      MYSQL_LOGIN: ${MYSQL_LOGIN}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      SERVERNAME: ${SERVERNAME}
-    networks:
-      ffxi-docker:
-        ipv4_address: 10.10.10.5
-    depends_on:
-    - "darkstar-db"
+  #DSGame expects search to be at same ip as connect
+  #This is fine for bridge networks when both are on same host
+  #But breaks on macvlan.
+  #darkstar-search:
+  #  container_name: darkstar-search
+  #  build: darkstar-search
+  #  environment:
+  #    MYSQL_HOST: darkstar-db
+  #    MYSQL_LOGIN: ${MYSQL_LOGIN}
+  #    MYSQL_DATABASE: ${MYSQL_DATABASE}
+  #    MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  #    SERVERNAME: ${SERVERNAME}
+  #  networks:
+  #    ffxi-docker:
+  #      ipv4_address: 10.10.10.5
+  #  depends_on:
+  #  - "darkstar-db"
   darkstar-server:
     container_name: darkstar-server-1
     build: darkstar-server-1
