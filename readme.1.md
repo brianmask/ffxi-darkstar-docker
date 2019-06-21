@@ -1,0 +1,75 @@
+# ffxi-darkstar-docker
+
+dockerfied darkstar allows you to quickly setup and deploy a containerized ffxi server.
+
+two seperate services (server / db); utilizes docker volume to persist db data; supervisord for connect/game/search daemons; does not run as root.
+
+server is based off of ubuntu:trusty, db is based off mysql:5.5 (why 5.5? there are null constraint issues in 5.6).
+
+---
+
+onbuild:
+- db container shallow clones darkstar (stable), copies SQL into seed directory; cleans up
+- server container installs dependencies; shallow clones darkstar (stable); compiles; cleans up
+
+onstart:
+- db container copies seed data to target; prepends a `use` statement; injects a zone_ip update script
+- db container will run seed data if db defined as `$MYSQL_DATABASE` does not exist
+- app server uses `sed` to inject environment configuration parameters
+
+---
+
+recommendations:
+
+- use linux native or within a bridged linux VM. native osx/native windows or docker-machine may give you unexpected results
+- optional: copy `.env.example` -> `.env`; modify to your needs, if you don't you'll see WARNINGS (but server should still work)
+- optional: use an external volume mount for the database volume (nfs/filesystem)
+
+instructions:
+
+* install latest docker CE (https://store.docker.com/search?type=edition&offering=community)
+* install latest docker-compose `$ pip install docker-compose`
+* clone repo `git clone <ffxi-darkstar-docker>`
+* cd into base image `cd ffxi-darkstar-docker/darkstar-server`
+* build the base image `docker build --tag=darkstar-server-base .`
+* cd into the repo `cd ..`
+* start services `docker-compose up -d` 
+  + **first load of db is slow.  leave db running and restart other containers**
+  + **`docker-compose up -d darkstar-db` then waiting a few minutes is recommended for first start**
+
+---
+
+admin:
+
+* `docker-compose build` will force images to rebuild. to force a pull from darkstar `stable`, issue the build command with a `--no-cache` argument. 
+* `docker-compose restart` will ... restart
+* `docker-compose down -v` will nuke your database if you decide to forego the advice of using an external volume
+* connect to `10.10.10.2` to with your (MySQL) database tool of choice. use the credentials defined in `.env`; or the default `darkstar:darkstar`
+* phpmyadmin is running at 10.10.10.3 for easy database management
+
+---
+
+usage:
+
+see darkstar doc/wiki for how to actually use the server: https://wiki.dspt.info/index.php/Main_Page
+
+services are exposed on the (typical) ports:
+
+- `0.0.0.0:54230`
+- `0.0.0.0:54230/udp`
+- `0.0.0.0:54231/udp`
+- `0.0.0.0:54232/udp`
+- `0.0.0.0:54233/udp`
+- `0.0.0.0:54234/udp`
+- `0.0.0.0:54235/udp`
+- `0.0.0.0:54236/udp`
+- `0.0.0.0:54231`
+- `0.0.0.0:54001`
+- `0.0.0.0:54002`
+- `0.0.0.0:23055` (MySQL DB)
+
+---
+
+Inspiration for this repo taken from:
+https://github.com/notsureifkevin/ffxi-darkstar-docker
+https://github.com/Korrbit/ffxi-darkstar-octopus.git
