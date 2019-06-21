@@ -4,7 +4,7 @@ COPY docker-entrypoint.sh /usr/local/bin/
 
 # add darkstar user and fix permissions
 RUN apt-get update && \
-  apt-get install python-pip && \
+  apt-get install -y python-pip && \
   pip install supervisor supervisor-stdout && \
   rm -rf /var/lib/apt/lists/* && \
   chmod a+x /usr/local/bin/docker-entrypoint.sh
