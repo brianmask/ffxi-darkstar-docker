@@ -3,7 +3,7 @@ version: '2'
 volumes:
   db_data:
 services:
-  darkstar-login:
+  darkstar-lobby:
     container_name: darkstar-lobby
     build: darkstar-login
     environment:
@@ -12,30 +12,14 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.10.10.4
+      MSG_SERVER: 10.10.10.10
     networks:
       ffxi-docker:
-        ipv4_address: 10.10.10.4
+        ipv4_address: 10.10.10.10
     depends_on:
     - "darkstar-db"
-  #DSGame expects search to be at same ip as connect
-  #This is fine for bridge networks when both are on same host
-  #But breaks on macvlan.
-  #darkstar-search:
-  #  container_name: darkstar-search
-  #  build: darkstar-search
-  #  environment:
-  #    MYSQL_HOST: darkstar-db
-  #    MYSQL_LOGIN: ${MYSQL_LOGIN}
-  #    MYSQL_DATABASE: ${MYSQL_DATABASE}
-  #    MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-  #    SERVERNAME: ${SERVERNAME}
-  #  networks:
-  #    ffxi-docker:
-  #      ipv4_address: 10.10.10.5
-  #  depends_on:
-  #  - "darkstar-db"
-  darkstar-server:
+
+    darkstar-server-1:
     container_name: darkstar-server-1
     build: darkstar-server-1
     environment:
@@ -44,109 +28,136 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.10.10.4
+      MSG_SERVER: 10.10.10.10
+      IP: 10.10.11.0
+      PORT: 54230
     networks:
       ffxi-docker:
-        ipv4_address: 10.10.10.6
+        ipv4_address: 10.10.11.0
     depends_on:
     - "darkstar-db"
     - "darkstar-login"
-  darkstar-server-2:
+  
+    darkstar-server-2:
     container_name: darkstar-server-2
-    build: darkstar-server-2
+    build: darkstar-server-1
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.10.10.4
+      MSG_SERVER: 10.10.10.10
+      IP: 10.10.11.1
+      PORT: 54231
     networks:
       ffxi-docker:
-        ipv4_address: 10.10.10.7
+        ipv4_address: 10.10.11.1
     depends_on:
     - "darkstar-db"
     - "darkstar-login"
+
   darkstar-server-3:
     container_name: darkstar-server-3
-    build: darkstar-server-3
+    build: darkstar-server-1
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.10.10.4
+      MSG_SERVER: 10.10.10.10
+      IP: 10.10.11.2
+      PORT: 54232
     networks:
       ffxi-docker:
-        ipv4_address: 10.10.10.8
+        ipv4_address: 10.10.11.2
     depends_on:
     - "darkstar-db"
     - "darkstar-login"
+
   darkstar-server-4:
     container_name: darkstar-server-4
-    build: darkstar-server-4
+    build: darkstar-server-1
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.10.10.4
+      MSG_SERVER: 10.10.10.10
+      IP: 10.10.11.3
+      PORT: 54233
     networks:
       ffxi-docker:
-        ipv4_address: 10.10.10.9
+        ipv4_address: 10.10.11.3
     depends_on:
     - "darkstar-db"
     - "darkstar-login"
+
   darkstar-server-5:
     container_name: darkstar-server-5
-    build: darkstar-server-5
+    build: darkstar-server-1
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.10.10.4
+      MSG_SERVER: 10.10.10.10
+      IP: 10.10.11.4
+      PORT: 54234
     networks:
       ffxi-docker:
-        ipv4_address: 10.10.10.10
+        ipv4_address: 10.10.11.4
     depends_on:
     - "darkstar-db"
     - "darkstar-login"
+
   darkstar-server-6:
     container_name: darkstar-server-6
-    build: darkstar-server-6
+    build: darkstar-server-1
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.10.10.4
+      MSG_SERVER: 10.10.10.10
+      IP: 10.10.11.5
+      PORT: 54235
     networks:
       ffxi-docker:
-        ipv4_address: 10.10.10.11
+        ipv4_address: 10.10.11.5
     depends_on:
     - "darkstar-db"
     - "darkstar-login"
+
   darkstar-server-7:
     container_name: darkstar-server-7
-    build: darkstar-server-7
+    build: darkstar-server-1
     environment:
       MYSQL_HOST: darkstar-db
       MYSQL_LOGIN: ${MYSQL_LOGIN}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
       SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.10.10.4
+      MSG_SERVER: 10.10.10.10
+      IP: 10.10.11.6
+      PORT: 54236
     networks:
       ffxi-docker:
-        ipv4_address: 10.10.10.12
+        ipv4_address: 10.10.11.6
     depends_on:
     - "darkstar-db"
     - "darkstar-login"
+
+  #broker:
+  #  container_name: broker
+  #  build: pydarkstar
+  #networks:
+  #  ffxi-docker:
+  #    ipv4_address: 10.10.10.4
   myadmin:
     image: phpmyadmin/phpmyadmin:latest
     depends_on:
@@ -158,6 +169,7 @@ services:
     networks:
       ffxi-docker:
         ipv4_address: 10.10.10.3
+
   darkstar-db:
      container_name: darkstar-db
      build: darkstar-db

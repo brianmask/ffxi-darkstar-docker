@@ -9,6 +9,8 @@ MYSQL_PASSWORD=${MYSQL_PASSWORD:-darkstar}
 MYSQL_DATABASE=${MYSQL_DATABASE:-dspdb}
 SERVERNAME=${SERVERNAME:-DarkStar}
 MSG_SERVER=${MSG_SERVER:-127.0.0.1}
+IP=${IP}
+PORT=${PORT}
 
 ## modify configuration
 function modConfig() {
@@ -30,4 +32,4 @@ function modConfig() {
 
 modConfig
 
-exec /darkstar/dsgame --ip 10.10.10.6 --port 54230
+exec /darkstar/dsgame --ip $IP --port $PORT
