@@ -1,7 +1,7 @@
 FROM debian:buster as base
 
 RUN apt-get update && \
-    apt-get install git && \
+    apt-get install -y git && \
     git clone --depth=1 -b master https://github.com/brianmask/darkstar.git /darkstar
 
 # No need to cluter the environment

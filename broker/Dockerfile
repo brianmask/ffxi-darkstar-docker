@@ -1,7 +1,7 @@
 FROM debian:buster as base
 
 RUN apt-get update && \
-    apt-get install git && \
+    apt-get install -y git && \
     git clone --depth=1 -b master https://github.com/brianmask/pydarkstar.git /broker && \
     rm -rf /broker/.git
 
@@ -17,7 +17,6 @@ RUN chmod a+x /usr/local/bin/docker-entrypoint.sh && \
     groupadd -r broker && \
     useradd -g broker -ms /bin/bash broker && \
     chown -R broker:broker /broker
-
 
 USER broker
 WORKDIR /broker/bin
