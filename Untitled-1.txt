@@ -1,0 +1,6 @@
+mysqldump -h 10.10.10.2 -e -udspdb -pdspdb --hex-blob dspdb auction_house accounts accounts_banned \
+  auction_house audit_gm audit_chat char_blacklist char_effects char_equip char_exp char_inventory  \
+  char_jobs char_look char_merit char_pet char_points char_profile char_recast char_skills char_spells \
+  char_stats char_storage char_style char_unlocks char_vars chars conquest_system delivery_box linkshells > "./backup/character_info.sql"
+mysqldump -h 10.0.0.47 -e -udspdb -pdspdb dspdb exp_table > "/home/ffxi/sql_backup/exp_table.sql"
+mysqldump -h 10.0.0.47 -e -udspdb -pdspdb dspdb > "/home/ffxi/dspdb.sql"
