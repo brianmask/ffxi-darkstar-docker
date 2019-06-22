@@ -1,8 +1,6 @@
-FROM debian:buster as base
+FROM alpine:git as base
 
-RUN apt-get update && \
-    apt-get install -y git && \
-    git clone --depth=1 -b master https://github.com/brianmask/darkstar.git /darkstar
+RUN git clone --depth=1 -b master https://github.com/brianmask/darkstar.git /darkstar
 
 # No need to cluter the environment
 FROM mariadb:10.4

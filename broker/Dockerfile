@@ -1,8 +1,6 @@
-FROM debian:buster as base
+FROM alpine:git as base
 
-RUN apt-get update && \
-    apt-get install -y git && \
-    git clone --depth=1 -b master https://github.com/brianmask/pydarkstar.git /broker && \
+RUN git clone --depth=1 -b master https://github.com/brianmask/pydarkstar.git /broker && \
     rm -rf /broker/.git
 
 # base is just for the repo, no need to clutter the end result
