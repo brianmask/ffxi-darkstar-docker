@@ -4,7 +4,7 @@ ENV DS_BRANCH=master
 
 RUN apt-get update && \
   apt-get install -y software-properties-common build-essential autoconf \
-  g++-7 libluajit-5.1-dev libzmq3-dev libmariadbclient-dev git && \
+  g++-7 luajit libzmq3-dev luarocks libmariadbclient-dev git && \
   git clone --depth=1 -b ${DS_BRANCH} http://github.com/brianmask/darkstar.git/ /darkstar && \
   cd /darkstar && \
   sh autogen.sh && \
