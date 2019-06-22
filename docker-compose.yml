@@ -154,7 +154,7 @@ services:
 
   broker:
     container_name: broker
-    build: pydarkstar
+    build: broker
     depends_on:
     - "darkstar-db"
     networks:
