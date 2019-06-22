@@ -1,4 +1,4 @@
-FROM debian:buster AS initial
+FROM i386/debian:buster AS initial
 
 ENV DS_BRANCH=master
 
@@ -15,7 +15,7 @@ RUN apt-get update && \
   rm -rf /darkstar/*.o && \
   rm -rf /darkstar/.git
 
-FROM debian:buster 
+FROM i386/debian:buster-slim 
 
 COPY --from=initial /darkstar /darkstar
 
