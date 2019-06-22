@@ -1,4 +1,4 @@
-FROM alpine:git as base
+FROM alpine/git as base
 
 RUN git clone --depth=1 -b master https://github.com/brianmask/darkstar.git /darkstar
 
