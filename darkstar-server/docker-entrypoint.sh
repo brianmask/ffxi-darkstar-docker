@@ -158,6 +158,6 @@ function modSettings() {
 }
 
 modConfig
-modSettings
+#modSettings
 
 exec /darkstar/dsgame --ip $IP --port $PORT
