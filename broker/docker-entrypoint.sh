@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -ex
 
 MYSQL_HOST=${MYSQL_HOST:-localhost}
