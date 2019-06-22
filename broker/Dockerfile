@@ -15,5 +15,4 @@ RUN chmod a+x /usr/local/bin/docker-entrypoint.sh && \
 
 WORKDIR /broker/bin
 
-#CMD ["docker-entrypoint.sh"]
-CMD ["python"]
+CMD ["docker-entrypoint.sh"]
