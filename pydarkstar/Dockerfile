@@ -1,17 +1,25 @@
+FROM debian:buster as base
+
+RUN apt-get update && \
+    apt-get install git && \
+    git clone --depth=1 -b master https://github.com/brianmask/pydarkstar.git /broker && \
+    rm -rf /broker/.git
+
+# base is just for the repo, no need to clutter the end result
 FROM python:stretch
 
-#COPY etc/ etc/
-#COPY docker-entrypoint.sh /usr/local/bin/
+COPY --from=base /broker /broker 
+COPY docker-entrypoint.sh /usr/local/bin/
 
 # add darkstar user and fix permissions
-RUN chmod a+x /usr/local/bin/docker-entrypoint.sh
+RUN chmod a+x /usr/local/bin/docker-entrypoint.sh && \
+    pip install -r /broker/requirements.txt && \
+    groupadd -r broker && \
+    useradd -g broker -ms /bin/bash broker && \
+    chown -R broker:broker /broker
 
-USER darkstar
-#EXPOSE 54230 54230/udp 54231 54231/udp 54232/udp 54233/udp 54234/udp 54235/udp 54236/udp 54001 54002
-#WORKDIR /darkstar
 
-#USER darkstar
+USER broker
+WORKDIR /broker/bin
 
-#WORKDIR /darkstar
-#CMD ["docker-entrypoint.sh"]
-CMD ["python"]
+CMD ["docker-entrypoint.sh"]

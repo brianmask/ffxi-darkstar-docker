@@ -1,4 +1,4 @@
-FROM i386/debian:buster AS initial
+FROM debian:buster AS initial
 
 ENV DS_BRANCH=master
 
@@ -12,9 +12,10 @@ RUN apt-get update && \
   make -j12 && \
   rm -rf /darkstar/src && \
   rm -rf /darkstar/sql && \
-  rm -rf /darkstar/*.o 
+  rm -rf /darkstar/*.o && \
+  rm -rf /darkstar/.git
 
-FROM i386/debian:buster 
+FROM debian:buster 
 
 COPY --from=initial /darkstar /darkstar
 
