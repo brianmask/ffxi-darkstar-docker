@@ -14,20 +14,13 @@ AH_STACK=${AH_STACK:-5}
 
 ## modify configuration
 function modConfig() {
-    db_files=(config.yaml)
-
-    for f in ${db_files[@]}
-    do
-        if [[ -f /darkstar/bin/$f ]]; then
-            sed -i "s/^\(hostname:\s*\).*\$/\1$MYSQL_HOST/" /darkstar/bin/$f
-            sed -i "s/^\(username:\s*\).*\$/\1$MYSQL_LOGIN/" /darkstar/bin/$f
-            sed -i "s/^\(password:\s*\).*\$/\1$MYSQL_PASSWORD/" /darkstar/bin/$f
-            sed -i "s/^\(database:\s*\).*\$/\1$MYSQL_DATABASE/" /darkstar/bin/$f
-            sed -i "s/^\(name:\s*\).*\$/\1$AH_BOTNAME/" /darkstar/bin/$f
-            sed -i "s/^\(stock01:\s*\).*\$/\1$AH_SINGLE/" /darkstar/bin/$f
-            sed -i "s/^\(stock12:\s*\).*\$/\1$AH_STACK/" /darkstar/bin/$f
-        fi
-    done
+    sed -i "s/^\(hostname:\s*\).*\$/\1$MYSQL_HOST/" /broker/bin/config.yaml
+    sed -i "s/^\(username:\s*\).*\$/\1$MYSQL_LOGIN/" /broker/bin/config.yaml
+    sed -i "s/^\(password:\s*\).*\$/\1$MYSQL_PASSWORD/" /broker/bin/config.yaml
+    sed -i "s/^\(database:\s*\).*\$/\1$MYSQL_DATABASE/" /broker/bin/config.yaml
+    sed -i "s/^\(name:\s*\).*\$/\1$AH_BOTNAME/" /broker/bin/config.yaml
+    sed -i "s/^\(stock01:\s*\).*\$/\1$AH_SINGLE/" /broker/bin/config.yaml
+    sed -i "s/^\(stock12:\s*\).*\$/\1$AH_STACK/" /broker/bin/config.yaml
 }
 
 modConfig
