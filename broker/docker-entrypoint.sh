@@ -14,7 +14,7 @@ AH_STACK=${AH_STACK:-5}
 
 ## modify configuration
 function modConfig() {
-    local db_files=(config.yaml)
+    db_files=(config.yaml)
 
     for f in ${db_files[@]}
     do
