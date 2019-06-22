@@ -11,12 +11,8 @@ COPY docker-entrypoint.sh /usr/local/bin/
 
 # add darkstar user and fix permissions
 RUN chmod a+x /usr/local/bin/docker-entrypoint.sh && \
-    pip install beautifulsoup4 pymysql pyyaml six sqlalchemy && \
-    groupadd -r broker && \
-    useradd -g broker -ms /bin/bash broker && \
-    chown -R broker:broker /broker
+    pip install beautifulsoup4 pymysql pyyaml six sqlalchemy
 
-USER broker
 WORKDIR /broker/bin
 
 CMD ["docker-entrypoint.sh"]
