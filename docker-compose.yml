@@ -155,6 +155,11 @@ services:
   broker:
     container_name: broker
     build: broker
+    environment:
+      MYSQL_HOST: darkstar-db
+      MYSQL_LOGIN: ${MYSQL_LOGIN}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     depends_on:
     - "darkstar-db"
     networks:

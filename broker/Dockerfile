@@ -4,7 +4,7 @@ RUN git clone --depth=1 -b master https://github.com/brianmask/pydarkstar.git /b
     rm -rf /broker/.git
 
 # base is just for the repo, no need to clutter the end result
-FROM python:stretch
+FROM python:3.7-alpine
 
 COPY --from=base /broker /broker 
 COPY docker-entrypoint.sh /usr/local/bin/
