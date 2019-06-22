@@ -20,7 +20,7 @@ FROM ubuntu:bionic
 COPY --from=initial /darkstar /darkstar
 
 RUN apt-get update && \
-  apt-get install -y libluajit-5.1-dev libzmq3-dev libmariadbclient-dev && \
+  apt-get install -y luajit libzmq3-dev luarocks libmariadbclient-dev && \
   rm -rf /var/lib/apt/lists/* && \
   groupadd -r darkstar && \
   useradd -g darkstar -ms /bin/bash darkstar && \
