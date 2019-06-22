@@ -136,13 +136,9 @@ services:
   darkstar-server-7:
     container_name: darkstar-server-7
     build: darkstar-server
+    env_file:
+    - .env
     environment:
-      MYSQL_HOST: darkstar-db
-      MYSQL_LOGIN: ${MYSQL_LOGIN}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      SERVERNAME: ${SERVERNAME}
-      MSG_SERVER: 10.10.10.10
       IP: 10.10.11.6
       PORT: 54236
     networks:
@@ -155,11 +151,8 @@ services:
   broker:
     container_name: broker
     build: broker
-    environment:
-      MYSQL_HOST: darkstar-db
-      MYSQL_LOGIN: ${MYSQL_LOGIN}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    env_file:
+    - .env
     depends_on:
     - "darkstar-db"
     networks:
