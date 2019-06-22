@@ -152,12 +152,15 @@ services:
     - "darkstar-db"
     - "darkstar-lobby"
 
-  #broker:
-  #  container_name: broker
-  #  build: pydarkstar
-  #networks:
-  #  ffxi-docker:
-  #    ipv4_address: 10.10.10.4
+  broker:
+    container_name: broker
+    build: pydarkstar
+    depends_on:
+    - "darkstar-db"
+    networks:
+      ffxi-docker:
+        ipv4_address: 10.10.10.4
+
   myadmin:
     image: phpmyadmin/phpmyadmin:latest
     depends_on:
