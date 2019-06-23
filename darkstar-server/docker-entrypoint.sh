@@ -19,6 +19,7 @@ craft_chance_multiplier=${craft_chance_multiplier:-29}
 player_hp_multiplier=${player_hp_multiplier:-1.1}
 player_mp_multiplier=${player_mp_multiplier:-1.1}
 max_merit_points=${max_merit_points:-30}
+exp_rate=${exp_rate:-4.0}
 
 ## settings.lua Server Configuration
 ENABLE_COP=${ENABLE_COP:-1;}
@@ -105,6 +106,7 @@ function modSettings() {
             sed -i "s/^\(player_hp_multiplier:\s*\).*\$/\1$player_hp_multiplier/" conf/$f
             sed -i "s/^\(player_mp_multiplier:\s*\).*\$/\1$player_mp_multiplier/" conf/$f
             sed -i "s/^\(max_merit_points:\s*\).*\$/\1$max_merit_points/" conf/$f
+            sed -i "s/^\(exp_rate:\s*\).*\$/\1$exp_rate/" conf/$f
         fi
     done
 

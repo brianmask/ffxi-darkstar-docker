@@ -19,6 +19,7 @@ craft_chance_multiplier=${craft_chance_multiplier:-2.6}
 player_hp_multiplier=${player_hp_multiplier:-1.0}
 player_mp_multiplier=${player_mp_multiplier:-1.0}
 max_merit_points=${max_merit_points:-30}
+exp_rate=${exp_rate:-1.0}
 
 ## settings.lua Server Configuration
 ENABLE_COP=${ENABLE_COP:-0;}
