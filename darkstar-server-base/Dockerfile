@@ -4,7 +4,7 @@ ENV DS_BRANCH=master
 
 RUN apt-get update && \
   apt-get install -y software-properties-common build-essential autoconf \
-  g++-7  libzmq3-dev liblua5.1-dev libluajit-5.1-dev libmariadbclient-dev git && \
+  g++-7  libzmq3-dev liblua5.1-dev libluajit-5.1-dev libmariadb-dev git && \
   git clone --depth=1 -b ${DS_BRANCH} http://github.com/brianmask/darkstar.git/ /darkstar && \
   cd /darkstar && \
   sh autogen.sh && \
@@ -20,7 +20,7 @@ FROM i386/debian:buster-slim
 COPY --from=initial /darkstar /darkstar
 
 RUN apt-get update && \
-  apt-get install -y liblua5.1-dev libluajit-5.1-dev libzmq3-dev libmariadbclient-dev && \
+  apt-get install -y liblua5.1-dev libluajit-5.1-dev libzmq3-dev libmariadb-dev && \
   rm -rf /var/lib/apt/lists/* && \
   groupadd -r darkstar && \
   useradd -g darkstar -ms /bin/bash darkstar && \
