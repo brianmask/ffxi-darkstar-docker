@@ -9,7 +9,7 @@ RUN apt-get update && \
   pip install supervisor supervisor-stdout && \
   rm -rf /var/lib/apt/lists/* && \
   rm -rf /darkstar/scripts/* && \
-  rf -rf /darkstar/navmeshes/* && \
+  rm -rf /darkstar/navmeshes/* && \
   chmod a+x /usr/local/bin/docker-entrypoint.sh
 
 USER darkstar
