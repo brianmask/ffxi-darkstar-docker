@@ -1,4 +1,4 @@
-FROM ubuntu:bionic AS initial
+FROM i386/debian:buster AS initial
 
 ENV DS_BRANCH=master
 
@@ -15,12 +15,12 @@ RUN apt-get update && \
   rm -rf /darkstar/*.o && \
   rm -rf /darkstar/.git
 
-FROM ubuntu:bionic 
+FROM i386/debian:buster-slim 
 
 COPY --from=initial /darkstar /darkstar
 
 RUN apt-get update && \
-  apt-get install -y liblua5.2-dev libzmq3-dev libmariadbclient-dev && \
+  apt-get install -y liblua5.1-dev libluajit-5.1-dev libzmq3-dev libmariadbclient-dev && \
   rm -rf /var/lib/apt/lists/* && \
   groupadd -r darkstar && \
   useradd -g darkstar -ms /bin/bash darkstar && \
