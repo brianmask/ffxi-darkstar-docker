@@ -1,4 +1,4 @@
-FROM darkstar-server-base:latest
+FROM brianmask/darkstar-server-base:latest
 
 ENV PORT ${PORT:-54230}
 COPY docker-entrypoint.sh /usr/local/bin/

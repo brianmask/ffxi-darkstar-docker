@@ -1,4 +1,4 @@
-FROM darkstar-server-base:latest
+FROM brianmask/darkstar-server-base:latest
 
 COPY etc/ etc/
 COPY docker-entrypoint.sh /usr/local/bin/

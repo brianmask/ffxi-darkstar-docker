@@ -19,7 +19,8 @@ RUN apt-get update && \
   rm -rf /darkstar/src && \
   rm -rf /darkstar/sql && \
   rm -rf /darkstar/*.o && \
-  rm -rf /darkstar/.git
+  rm -rf /darkstar/.git && \
+  rm -rf /darkstar/navmeses/.git
 
 FROM i386/debian:buster-slim 
 
